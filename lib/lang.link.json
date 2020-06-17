@@ -1,0 +1,41 @@
+[
+  {
+    "name": "start",
+    "scope": "continue",
+    "next": "msgbox"
+  },
+  {
+    "name": "msgbox",
+    "scope": "continue",
+    "func": "require",
+    "params": [
+      "./lib/js_io/msgbox.link.json"
+    ],
+    "next": "dom"
+  },
+  {
+    "name": "dom",
+    "scope": "continue",
+    "func": "require",
+    "params": [
+      "./lib/js_io/dom.link.json"
+    ],
+    "next": "jsvar"
+  },{
+    "name": "jsvar",
+    "scope": "continue",
+    "func": "require",
+    "params": [
+      "./lib/mem/js_mem.link.json"
+    ],
+    "next": "math"
+  },{
+    "name": "math",
+    "scope": "continue",
+    "func": "require",
+    "params": [
+      "./lib/math.link.json"
+    ],
+    "next": "end"
+  }
+]

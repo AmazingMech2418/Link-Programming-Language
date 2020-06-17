@@ -1,0 +1,44 @@
+[
+  {
+    "name": "start",
+    "scope": "continue",
+    "next": "module"
+  },
+  {
+    "name": "module",
+    "scope": "continue",
+    "func": "require",
+    "params": [
+      "./lib/lang.link.json"
+    ],
+    "next": "alert"
+  },
+  {
+    "name": "alert",
+    "scope": "continue",
+    "func": "alert",
+    "params": [
+      {"ref":"join"}
+    ],
+    "next": "end"
+  },
+  {
+    "name": "join",
+    "scope": "continue",
+    "func": "join",
+    "params": [
+      "Hi, ",
+      {"ref":"prompt"}
+    ],
+    "next": "end"
+  },
+  {
+    "name": "prompt",
+    "scope": "continue",
+    "func": "prompt",
+    "params": [
+      "Hi! What is your name?"
+    ],
+    "next": "end"
+  }
+]

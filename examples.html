@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Link | Examples</title>
+	<link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+	<script src="./src/mem/mem.js">
+
+	</script>
+	<script src="./src/mem/memvm.js">
+
+	</script>
+	<script src="linkJSON.js">
+
+	</script>
+	<div id="nav">
+
+		<a href="./">Home</a>
+    <a href="./docs.html">Documentation</a>
+    <a href="./examples.html">Examples</a>
+	</div>
+	<div class='header'>
+		<h1>Link - Examples</h1>
+	</div>
+  <script>
+    let hello_world = link.read(require('./examples/hello_world.link.json'));
+    let count = link.read(require('./examples/count.link.json'));
+    let calc = link.read(require('./examples/calculator.link.json'));
+    let chatbot = link.read(require('./examples/chatbot.link.json'));
+    //let chatbot = link.read(require('./examples/secmem.link.json'));
+  </script>
+	<div class='card'>
+		<h4>Example 1 - Hello World</h4>
+		<p>
+<code>[
+  {
+    "name": "start",
+    "scope": "continue",
+    "next": "module"
+  },
+  {
+    "name": "module",
+    "scope": "continue",
+    "func": "require",
+    "params": [
+      "./lib/js_io/msgbox.link.json"
+    ],
+    "next": "alert"
+  },
+  {
+    "name": "alert",
+    "scope": "continue",
+    "func": "alert",
+    "params": [
+      "Hello World!"
+    ],
+    "next": "end"
+  }
+]</code><br/>
+<button onclick="hello_world.start()">Start Example</button>
+    </p>
+	</div>
+	<div class='card'>
+		<h4>Example 2 - Count</h4>
+		<p>
+      <code>[
+  {
+    "name": "start",
+    "scope": "continue",
+    "next": "module"
+  },
+  {
+    "name": "module",
+    "scope": "continue",
+    "func": "require",
+    "params": [
+      "./lib/lang.link.json"
+    ],
+    "next": "createVar"
+  },
+  {
+    "name": "createVar",
+    "scope": "continue",
+    "func": "setVarJS",
+    "params": [
+      "counter",
+      0
+    ],
+    "next": "if"
+  },
+  {
+    "name": "alert",
+    "scope": "continue",
+    "func": "alert",
+    "params": [
+      {
+        "ref": "getVar"
+      }
+    ],
+    "next": "if"
+  },
+  {
+    "name": "add",
+    "scope": "end",
+    "func": "add",
+    "params": [
+      {
+        "ref": "getVar"
+      },
+      1
+    ],
+    "next": "end"
+  },
+  {
+    "name": "getVar",
+    "scope": "end",
+    "func": "getVarJS",
+    "params": [
+      "counter"
+    ],
+    "next": "end"
+  },
+  {
+    "name": "addToVar",
+    "scope": "continue",
+    "func": "setVarJS",
+    "params": [
+      "counter",
+      {
+        "ref": "add"
+      }
+    ],
+    "next": "alert"
+  },
+  {
+    "name": "if",
+    "scope": "continue",
+    "func": "switch",
+    "inputs": [
+      "lt"
+    ],
+    "outputs": [
+      "addToVar"
+    ],
+    "next": "end"
+  },
+  {
+    "name": "lt",
+    "scope": "continue",
+    "func": "less",
+    "params": [
+      {
+        "ref": "getVar"
+      },
+      10
+    ],
+    "next": "end"
+  }
+]</code><br/>
+      <button onclick="count.start()">Start Example</button>
+    </p>
+	</div>
+	<div class='card'>
+		<h4>Example 3 - Calculator</h4>
+		<p>
+
+<code>[
+  {
+    "name": "start",
+    "scope": "continue",
+    "next": "module"
+  },
+  {
+    "name": "module",
+    "scope": "continue",
+    "func": "require",
+    "params": [
+      "./lib/lang.link.json"
+    ],
+    "next": "prompt"
+  },
+  {
+    "name": "prompt",
+    "scope": "continue",
+    "func": "setVarJS",
+    "params": [
+      "operation",
+      {"ref":"op"}
+    ],
+    "next": "if"
+  },
+  {
+    "name": "get",
+    "scope": "continue",
+    "func": "getVarJS",
+    "params": [
+      "operation"
+    ],
+    "next": "end"
+  },
+  {
+    "name": "op",
+    "scope": "continue",
+    "func": "prompt",
+    "params": [
+      "What operation? (+, -, *, /)"
+    ],
+    "next": "end"
+  },
+  {
+    "name": "num1",
+    "scope": "continue",
+    "func": "prompt",
+    "params": [
+      "Number 1"
+    ],
+    "next": "end"
+  },
+  {
+    "name": "num2",
+    "scope": "continue",
+    "func": "prompt",
+    "params": [
+      "Number 2"
+    ],
+    "next": "end"
+  },
+  {
+    "name": "if",
+    "scope": "continue",
+    "func": "switch",
+    "inputs": [
+      "mult",
+      "div",
+      "sub",
+      "add",
+      "else"
+    ],
+    "outputs": [
+      "multout",
+      "divout",
+      "subout",
+      "addout",
+      "error"
+    ],
+    "next": "end"
+  },
+  {
+    "name": "error",
+    "scope": "continue",
+    "func": "alert",
+    "params": [
+      "ERROR"
+    ],
+    "next": "end"
+  },
+  {
+    "name": "mult",
+    "scope": "continue",
+    "func": "equal",
+    "params": [
+      {"ref":"get"},
+      "*"
+    ],
+    "next": "end"
+  },
+  {
+    "name": "multout",
+    "scope": "continue",
+    "func": "alert",
+    "params": [
+      {"ref":"multcalc"}
+    ],
+    "next": "end"
+  },
+    {
+    "name": "multcalc",
+    "scope": "continue",
+    "func": "multiply",
+    "params": [
+      {"ref":"num1"},
+      {"ref":"num2"}
+    ],
+    "next": "end"
+  },
+  {
+    "name": "add",
+    "scope": "continue",
+    "func": "equal",
+    "params": [
+      {"ref":"get"},
+      "+"
+    ],
+    "next": "end"
+  },
+  {
+    "name": "addout",
+    "scope": "continue",
+    "func": "alert",
+    "params": [
+      {"ref":"addcalc"}
+    ],
+    "next": "end"
+  },
+    {
+    "name": "addcalc",
+    "scope": "continue",
+    "func": "add",
+    "params": [
+      {"ref":"num1"},
+      {"ref":"num2"}
+    ],
+    "next": "end"
+  },
+  {
+    "name": "div",
+    "scope": "continue",
+    "func": "equal",
+    "params": [
+      {"ref":"get"},
+      "/"
+    ],
+    "next": "end"
+  },
+  {
+    "name": "divout",
+    "scope": "continue",
+    "func": "alert",
+    "params": [
+      {"ref":"divcalc"}
+    ],
+    "next": "end"
+  },
+    {
+    "name": "divcalc",
+    "scope": "continue",
+    "func": "divide",
+    "params": [
+      {"ref":"num1"},
+      {"ref":"num2"}
+    ],
+    "next": "end"
+  },
+  {
+    "name": "sub",
+    "scope": "continue",
+    "func": "equal",
+    "params": [
+      {"ref":"get"},
+      "-"
+    ],
+    "next": "end"
+  },
+  {
+    "name": "subout",
+    "scope": "continue",
+    "func": "alert",
+    "params": [
+      {"ref":"subcalc"}
+    ],
+    "next": "end"
+  },
+    {
+    "name": "subcalc",
+    "scope": "continue",
+    "func": "subtract",
+    "params": [
+      {"ref":"num1"},
+      {"ref":"num2"}
+    ],
+    "next": "end"
+  }
+]</code><br/>
+      <button onclick="calc.start()">Start Example</button>
+    </p>
+		
+	</div>
+	<div class='card'>
+		<h4>Example 4 - Basic Chatbot</h4>
+    <p>
+<code>[
+  {
+    "name": "start",
+    "scope": "continue",
+    "next": "module"
+  },
+  {
+    "name": "module",
+    "scope": "continue",
+    "func": "require",
+    "params": [
+      "./lib/lang.link.json"
+    ],
+    "next": "alert"
+  },
+  {
+    "name": "alert",
+    "scope": "continue",
+    "func": "alert",
+    "params": [
+      {"ref":"join"}
+    ],
+    "next": "end"
+  },
+  {
+    "name": "join",
+    "scope": "continue",
+    "func": "join",
+    "params": [
+      "Hi, ",
+      {"ref":"prompt"}
+    ],
+    "next": "end"
+  },
+  {
+    "name": "prompt",
+    "scope": "continue",
+    "func": "prompt",
+    "params": [
+      "Hi! What is your name?"
+    ],
+    "next": "end"
+  }
+]
+</code><br/>
+
+<button onclick="chatbot.start()">Start Example</button></p>
+	</div>
+  <div class='card'>
+		<h4>Example 5 - Secure Memory</h4>
+    <p>
+<code>Code not written, still need secure memory module</code><br/>
+<button onclick="secmem.start()">Start Example</button></p>
+	</div>
+	</script>
+</body>
+
+</html>

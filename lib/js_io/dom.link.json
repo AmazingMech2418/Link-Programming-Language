@@ -1,0 +1,43 @@
+[
+  {
+    "name": "start",
+    "scope": "continue",
+    "next": "get"
+  },
+  {
+    "name": "get",
+    "scope": "continue",
+    "func": "require",
+    "params": [
+      "./lib/js_io/DOM/getels.link.json"
+    ],
+    "next": "create"
+  },
+  {
+    "name": "create",
+    "scope": "continue",
+    "func": "require",
+    "params": [
+      "./lib/js_io/DOM/createel.link.json"
+    ],
+    "next": "body"
+  },
+  {
+    "name": "body",
+    "scope": "continue",
+    "func": "require",
+    "params": [
+      "./lib/js_io/DOM/body.link.json"
+    ],
+    "next": "attr"
+  },
+  {
+    "name": "attr",
+    "scope": "continue",
+    "func": "require",
+    "params": [
+      "./lib/js_io/DOM/attr.link.json"
+    ],
+    "next": "end"
+  }
+]

@@ -1,0 +1,27 @@
+[
+  {
+    "name": "start",
+    "scope": "continue",
+    "next": "set"
+  },
+  {
+    "name": "set",
+    "scope": "continue",
+    "func": "def",
+    "params": [
+      "setAttr",
+      "(function(params,m){return params[0].setAttribute(params[1],params[2]);})"
+    ],
+    "next": "html"
+  },
+  {
+    "name": "html",
+    "scope": "continue",
+    "func": "def",
+    "params": [
+      "setInnerHTML",
+      "(function(params,m){params[0].innerHTML = params[1];})"
+    ],
+    "next": "end"
+  }
+]

@@ -1,0 +1,27 @@
+[
+  {
+    "name": "start",
+    "scope": "continue",
+    "next": "append"
+  },
+  {
+    "name": "append",
+    "scope": "continue",
+    "func": "def",
+    "params": [
+      "append",
+      "(function(params,m){document.body.appendChild(params[0]);})"
+    ],
+    "next": "title"
+  },
+  {
+    "name": "title",
+    "scope": "continue",
+    "func": "def",
+    "params": [
+      "title",
+      "(function(params,m){document.title = params[0];})"
+    ],
+    "next": "end"
+  }
+]

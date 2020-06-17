@@ -1,0 +1,25 @@
+[
+  {
+    "name": "start",
+    "scope": "continue",
+    "next": "module"
+  },
+  {
+    "name": "module",
+    "scope": "continue",
+    "func": "require",
+    "params": [
+      "./lib/js_io/msgbox.link.json"
+    ],
+    "next": "alert"
+  },
+  {
+    "name": "alert",
+    "scope": "continue",
+    "func": "alert",
+    "params": [
+      "Hello World!"
+    ],
+    "next": "end"
+  }
+]

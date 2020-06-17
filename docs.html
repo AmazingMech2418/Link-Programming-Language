@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Link | Documentation</title>
+	<link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+	<script src="./src/mem/mem.js">
+
+	</script>
+	<script src="./src/mem/memvm.js">
+
+	</script>
+	<script src="linkJSON.js">
+
+	</script>
+	<div id="nav">
+
+		<a href="./">Home</a>
+    <a href="./docs.html">Documentation</a>
+    <a href="./examples.html">Examples</a>
+	</div>
+	<div class='header'>
+		<h1>Link - Documentation</h1>
+	</div>
+	<div class='card'>
+		<h4>The Start Block</h4>
+		<p>To start programming with Link, you need to know the basics of the language.<br/>
+    <code>[
+      {
+        "name":"start",
+        "scope":"continue",
+        "next":"end"
+      }
+      ]</code><br/>
+      Above is a simple program comprising of a basic starting Link Block or Start Block. The main part is the <code>"name":"start"</code> attribute of the JSON object inside the array that comprises a Link Block. This will determine the starting point of the code. The other two attributes can be changed as well. The <code>"scope":"continue"</code> could be changed to <code>"scope":"new"</code> in order to create a new memory scope for the secure memory system. This would help secure the function definitions from the rest of the program so they don't get overwritten. The <code>"next":"end"</code> simply tells the code reader to end the program after the Link Block is complete. This will have to change in order to make the program do something.</p>
+	</div>
+	<div class='card'>
+		<h4>Definition Blocks</h4>
+		<p>In addition to Start Blocks, Definition Blocks are required to allow the program to actually do something. In most cases, you do not need to use a Definition Block since they are contained in the modules included in the programming language. However, you must use a Definition Block if you don't know how to use the Require Block. <br/>
+    <code>
+      {
+        "name":"defintion",
+        "scope":"continue",
+        "func":"def",
+        "params":[
+        "alert",
+        "(function(params,mem){alert(params[0]);})"
+        ],
+        "next":"end"
+      }
+      </code><br/>
+      Above is an example of a basic Definition Block that defines an alert function which will create a popup box. In a Definition Block, the "scope" and "next" attributes do the same thing as in the Start Block and any other Link Block. However, the "name" attribute simply names the block and is used to refer to the block in parameters and "next" attributes for sequencing. In a Definition Block, one attribute is required: <code>"func":"def"</code>. The "func" attribute defines the function used by the Link Block. In a Definition Block, the function is referred to as "def". The "params" attribute is simply an array of parameters as used by a function. In a Definition Block, these are the name of the function and the host language code for the function. The example defines a function called "alert" with the code being a simple function calling the JavaScript "alert" function. When defining the code in Link for Web or Link for NodeJS (collectively Link for JavaScript), the function must be in the format <code>(function(params,mem){/*Code goes here*/})</code> where the "params" parameter refers to an array with all parameters for the function and the "mem" parameter refers to the Link secure memory system scopes used by the function. However, for a function to be used as a Reference Block, the function must return a value. </p>
+	</div>
+	<div class='card'>
+		<h4>Require Blocks</h4>
+		<p>You need Require Blocks to refer to modules, whether in the main language or as a homemade module.<br/>
+    <code>
+      {
+        "name":"module",
+        "scope":"continue",
+        "func":"require",
+        "params":[
+        "path/to/module.link.json"
+        ],
+        "next":"end"
+      }
+      </code><br/>
+      Like in a Definition Block, the Require Block needs a specific "func" attribute. For a Require Block, it must be "require". A Require Block also needs only one parameter in the "params" array attribute, that being the path to the module. The path must also be in terms of the application where the program is being run (i.e. an HTML file using Link for Web). </p>
+		
+	</div>
+	<div class='card'>
+		<h4>Function Blocks</h4>
+    <p>Function Blocks are any Link Blocks which perform a function, including Definition Blocks and Require Blocks.<br/>
+    <code>
+      {
+        "name":"alert",
+        "scope":"continue",
+        "func":"alert",
+        "params":[
+        "hi"
+        ],
+        "next":"end"
+      }
+      </code><br/>
+      A function block defines the function in the "func" attribute. In this case, the Function Block has a function of "alert" which has already been defined in the Definition Block section as the JavaScript "alert" function. The "params" array attribute will map into the "params" parameter in the host language function in the function definition. You can also make a parameter refer to another function as shown below.<br/>
+    <code>
+      {
+        "name":"alert",
+        "scope":"continue",
+        "func":"alert",
+        "params":[
+        {"ref":"anotherfunction"}
+        ],
+        "next":"end"
+      }
+      </code><br/>
+      A reference is defined by an object in the "params" array attribute with a "ref" attribute set to the name of another function. A reference will set the parameter it is in place of to the return value of the Reference Block it refers to. A Reference Block is a Function Block used in a reference. Likewise, a Stack Block is a Function Block used in sequencing (referred to in "next" attribute). </p>
+	</div>
+  <div class='card'>
+		<h4>Switch Blocks</h4>
+    <p>Switch Blocks are Link Blocks used for if...else if...else statements.<br/>
+    <code>
+      {
+        "name":"conditional",
+        "scope":"continue",
+        "func":"switch",
+        "inputs":[
+        "in1",
+        "in2",
+        "in3",
+        "else"
+        ],
+        "outputs":[
+        "out1",
+        "out2",
+        "out3",
+        "out_else"
+        ],
+        "next":"end"
+      }
+      </code><br/>
+      In a Switch Block, you use inputs to control outputs. Inputs are either reference inputs or else inputs. Reference inputs refer to a boolean Reference Function while else inputs are triggered only if no previous reference input are triggered. If an input is triggered, it triggers its corresponding output. A Switch Block can also be used as a Reference Block and will return the result of the triggered output if the "next" attribute is set to "end" and will return the result of the last block in a sequence if the "next" attribute is set to anything else. </p>
+	</div>
+	</script>
+</body>
+
+</html>

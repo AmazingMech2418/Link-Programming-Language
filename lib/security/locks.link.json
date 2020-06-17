@@ -1,0 +1,27 @@
+[
+  {
+    "name": "start",
+    "scope": "continue",
+    "next": "deflock"
+  },
+  {
+    "name": "deflock",
+    "scope": "continue",
+    "func": "def",
+    "params": [
+      "LockDef",
+      "(function(params,m){m[0].setVar('deflock',true,true);})"
+    ],
+    "next": "reqlock"
+  },
+  {
+    "name": "reqlock",
+    "scope": "continue",
+    "func": "def",
+    "params": [
+      "LockRequire",
+      "(function(params,m){m[0].setVar('reqlock',true,true);m.setVar('reqallow',params,true);})"
+    ],
+    "next": "end"
+  }
+]

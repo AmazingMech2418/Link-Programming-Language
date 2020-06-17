@@ -1,0 +1,27 @@
+[
+  {
+    "name": "start",
+    "scope": "continue",
+    "next": "id"
+  },
+  {
+    "name": "id",
+    "scope": "continue",
+    "func": "def",
+    "params": [
+      "getElByID",
+      "(function(params,m){return document.getElementById(params[0]);})"
+    ],
+    "next": "tag"
+  },
+  {
+    "name": "tag",
+    "scope": "continue",
+    "func": "def",
+    "params": [
+      "getElsByTag",
+      "(function(params,m){return document.getElementsByTagName(params[0]);})"
+    ],
+    "next": "end"
+  }
+]

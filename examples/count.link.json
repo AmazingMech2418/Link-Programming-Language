@@ -1,0 +1,94 @@
+[
+  {
+    "name": "start",
+    "scope": "continue",
+    "next": "module"
+  },
+  {
+    "name": "module",
+    "scope": "continue",
+    "func": "require",
+    "params": [
+      "./lib/lang.link.json"
+    ],
+    "next": "createVar"
+  },
+  {
+    "name": "createVar",
+    "scope": "continue",
+    "func": "setVarJS",
+    "params": [
+      "counter",
+      0
+    ],
+    "next": "if"
+  },
+  {
+    "name": "alert",
+    "scope": "continue",
+    "func": "alert",
+    "params": [
+      {
+        "ref": "getVar"
+      }
+    ],
+    "next": "if"
+  },
+  {
+    "name": "add",
+    "scope": "end",
+    "func": "add",
+    "params": [
+      {
+        "ref": "getVar"
+      },
+      1
+    ],
+    "next": "end"
+  },
+  {
+    "name": "getVar",
+    "scope": "end",
+    "func": "getVarJS",
+    "params": [
+      "counter"
+    ],
+    "next": "end"
+  },
+  {
+    "name": "addToVar",
+    "scope": "continue",
+    "func": "setVarJS",
+    "params": [
+      "counter",
+      {
+        "ref": "add"
+      }
+    ],
+    "next": "alert"
+  },
+  {
+    "name": "if",
+    "scope": "continue",
+    "func": "switch",
+    "inputs": [
+      "lt"
+    ],
+    "outputs": [
+      "addToVar"
+    ],
+    "next": "end"
+  },
+  {
+    "name": "lt",
+    "scope": "continue",
+    "func": "less",
+    "params": [
+      {
+        "ref": "getVar"
+      },
+      10
+    ],
+    "next": "end"
+  }
+]

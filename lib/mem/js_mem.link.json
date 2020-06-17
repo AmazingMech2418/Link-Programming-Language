@@ -1,0 +1,27 @@
+[
+  {
+    "name": "start",
+    "scope": "continue",
+    "next": "set"
+  },
+  {
+    "name": "set",
+    "scope": "continue",
+    "func": "def",
+    "params": [
+      "setVarJS",
+      "(function(params,m){window[params[0]]=params[1];})"
+    ],
+    "next": "get"
+  },
+  {
+    "name": "get",
+    "scope": "continue",
+    "func": "def",
+    "params": [
+      "getVarJS",
+      "(function(params,m){return window[params[0]];})"
+    ],
+    "next": "end"
+  }
+]

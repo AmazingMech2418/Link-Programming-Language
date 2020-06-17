@@ -1,0 +1,36 @@
+[
+  {
+    "name": "start",
+    "scope": "continue",
+    "next": "module"
+  },
+  {
+    "name": "module",
+    "scope": "continue",
+    "func": "require",
+    "params": [
+      "./lib/lang.link.json"
+    ],
+    "next": "alerttest"
+  },
+  {
+    "name": "alerttest",
+    "scope": "continue",
+    "func": "alert",
+    "params": [
+      {
+        "ref": "prompttest"
+      }
+    ],
+    "next": "end"
+  },
+  {
+    "name": "prompttest",
+    "scope": "continue",
+    "func": "prompt",
+    "params": [
+      "hi"
+    ],
+    "next": "end"
+  }
+]

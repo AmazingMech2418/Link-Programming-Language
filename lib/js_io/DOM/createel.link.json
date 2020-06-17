@@ -1,0 +1,17 @@
+[
+  {
+    "name": "start",
+    "scope": "continue",
+    "next": "create"
+  },
+  {
+    "name": "create",
+    "scope": "continue",
+    "func": "def",
+    "params": [
+      "createEl",
+      "(function(params,m){return document.createElement(params[0]);})"
+    ],
+    "next": "end"
+  }
+]

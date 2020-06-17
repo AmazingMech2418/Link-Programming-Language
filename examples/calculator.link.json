@@ -1,0 +1,207 @@
+[
+  {
+    "name": "start",
+    "scope": "continue",
+    "next": "module"
+  },
+  {
+    "name": "module",
+    "scope": "continue",
+    "func": "require",
+    "params": [
+      "./lib/lang.link.json"
+    ],
+    "next": "prompt"
+  },
+  {
+    "name": "prompt",
+    "scope": "continue",
+    "func": "setVarJS",
+    "params": [
+      "operation",
+      {"ref":"op"}
+    ],
+    "next": "if"
+  },
+  {
+    "name": "get",
+    "scope": "continue",
+    "func": "getVarJS",
+    "params": [
+      "operation"
+    ],
+    "next": "end"
+  },
+  {
+    "name": "op",
+    "scope": "continue",
+    "func": "prompt",
+    "params": [
+      "What operation? (+, -, *, /)"
+    ],
+    "next": "end"
+  },
+  {
+    "name": "num1",
+    "scope": "continue",
+    "func": "prompt",
+    "params": [
+      "Number 1"
+    ],
+    "next": "end"
+  },
+  {
+    "name": "num2",
+    "scope": "continue",
+    "func": "prompt",
+    "params": [
+      "Number 2"
+    ],
+    "next": "end"
+  },
+  {
+    "name": "if",
+    "scope": "continue",
+    "func": "switch",
+    "inputs": [
+      "mult",
+      "div",
+      "sub",
+      "add",
+      "else"
+    ],
+    "outputs": [
+      "multout",
+      "divout",
+      "subout",
+      "addout",
+      "error"
+    ],
+    "next": "end"
+  },
+  {
+    "name": "error",
+    "scope": "continue",
+    "func": "alert",
+    "params": [
+      "ERROR"
+    ],
+    "next": "end"
+  },
+  {
+    "name": "mult",
+    "scope": "continue",
+    "func": "equal",
+    "params": [
+      {"ref":"get"},
+      "*"
+    ],
+    "next": "end"
+  },
+  {
+    "name": "multout",
+    "scope": "continue",
+    "func": "alert",
+    "params": [
+      {"ref":"multcalc"}
+    ],
+    "next": "end"
+  },
+    {
+    "name": "multcalc",
+    "scope": "continue",
+    "func": "multiply",
+    "params": [
+      {"ref":"num1"},
+      {"ref":"num2"}
+    ],
+    "next": "end"
+  },
+  {
+    "name": "add",
+    "scope": "continue",
+    "func": "equal",
+    "params": [
+      {"ref":"get"},
+      "+"
+    ],
+    "next": "end"
+  },
+  {
+    "name": "addout",
+    "scope": "continue",
+    "func": "alert",
+    "params": [
+      {"ref":"addcalc"}
+    ],
+    "next": "end"
+  },
+    {
+    "name": "addcalc",
+    "scope": "continue",
+    "func": "add",
+    "params": [
+      {"ref":"num1"},
+      {"ref":"num2"}
+    ],
+    "next": "end"
+  },
+  {
+    "name": "div",
+    "scope": "continue",
+    "func": "equal",
+    "params": [
+      {"ref":"get"},
+      "/"
+    ],
+    "next": "end"
+  },
+  {
+    "name": "divout",
+    "scope": "continue",
+    "func": "alert",
+    "params": [
+      {"ref":"divcalc"}
+    ],
+    "next": "end"
+  },
+    {
+    "name": "divcalc",
+    "scope": "continue",
+    "func": "divide",
+    "params": [
+      {"ref":"num1"},
+      {"ref":"num2"}
+    ],
+    "next": "end"
+  },
+  {
+    "name": "sub",
+    "scope": "continue",
+    "func": "equal",
+    "params": [
+      {"ref":"get"},
+      "-"
+    ],
+    "next": "end"
+  },
+  {
+    "name": "subout",
+    "scope": "continue",
+    "func": "alert",
+    "params": [
+      {"ref":"subcalc"}
+    ],
+    "next": "end"
+  },
+    {
+    "name": "subcalc",
+    "scope": "continue",
+    "func": "subtract",
+    "params": [
+      {"ref":"num1"},
+      {"ref":"num2"}
+    ],
+    "next": "end"
+  }
+]

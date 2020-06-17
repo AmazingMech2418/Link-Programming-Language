@@ -1,0 +1,87 @@
+[
+  {
+    "name": "start",
+    "scope": "continue",
+    "next": "add"
+  },
+  {
+    "name": "add",
+    "scope": "continue",
+    "func": "def",
+    "params": [
+      "add",
+      "(function(params,m){console.log(params[0],params[1]);return Number(params[0])+Number(params[1]);})"
+    ],
+    "next": "lt"
+  },
+  {
+    "name": "lt",
+    "scope": "continue",
+    "func": "def",
+    "params": [
+      "less",
+      "(function(params,m){return Number(params[0])<Number(params[1]);})"
+    ],
+    "next": "sub"
+  },
+  {
+    "name": "sub",
+    "scope": "continue",
+    "func": "def",
+    "params": [
+      "subtract",
+      "(function(params,m){return Number(params[0])-Number(params[1]);})"
+    ],
+    "next": "mult"
+  },
+  {
+    "name": "mult",
+    "scope": "continue",
+    "func": "def",
+    "params": [
+      "multiply",
+      "(function(params,m){return Number(params[0])*Number(params[1]);})"
+    ],
+    "next": "div"
+  },
+  {
+    "name": "div",
+    "scope": "continue",
+    "func": "def",
+    "params": [
+      "divide",
+      "(function(params,m){return Number(params[0])/Number(params[1]);})"
+    ],
+    "next": "gt"
+  },
+  {
+    "name": "gt",
+    "scope": "continue",
+    "func": "def",
+    "params": [
+      "greater",
+      "(function(params,m){return Number(params[0])>Number(params[1]);})"
+    ],
+    "next": "equal"
+  },
+  {
+    "name": "equal",
+    "scope": "continue",
+    "func": "def",
+    "params": [
+      "equal",
+      "(function(params,m){return params[0]==params[1];})"
+    ],
+    "next": "join"
+  },
+  {
+    "name": "join",
+    "scope": "continue",
+    "func": "def",
+    "params": [
+      "join",
+      "(function(params,m){return String(params[0])+String(params[1]);})"
+    ],
+    "next": "end"
+  }
+]

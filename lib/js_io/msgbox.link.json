@@ -1,0 +1,27 @@
+[
+  {
+    "name": "start",
+    "scope": "continue",
+    "next": "defalert"
+  },
+  {
+    "name": "defalert",
+    "scope": "continue",
+    "func": "def",
+    "params": [
+      "alert",
+      "(function(params,m){alert(params[0])})"
+    ],
+    "next": "defprompt"
+  },
+  {
+    "name": "defprompt",
+    "scope": "continue",
+    "func": "def",
+    "params": [
+      "prompt",
+      "(function(params,m){return prompt(params[0])})"
+    ],
+    "next": "end"
+  }
+]

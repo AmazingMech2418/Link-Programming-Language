@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Link | Home</title>
+	<link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+	<script src="./src/mem/mem.js">
+
+	</script>
+	<script src="./src/mem/memvm.js">
+
+	</script>
+	<script src="linkJSON.js">
+
+	</script>
+	<div id="nav">
+
+		<a href="./">Home</a>
+		<a href="./docs.html">Documentation</a>
+		<a href="./examples.html">Examples</a>
+	</div>
+	<div class='header'>
+		<h1>Welcome to Link!</h1>
+	</div>
+	<div class='card'>
+		<h4>About</h4>
+		<p>Link is a high-level programming language with low-level programming features. It uses a JSON-based syntax to quickly
+			parse a program and run it. Due to its JSON-based syntax, Link can be run on any platform with many different programming
+			language bases from NodeJS to JavaScript and HTML, as well as Python in the future. Link also has the ability to be compiled
+			from other programming languages, whether text-based or block-based. Link is also perfect for compiling block-based programs
+			such as those you can find on <a href="https://scratch.mit.edu">Scratch</a>, among other websites. Learning the Link programming
+			language also takes Computer Science to a new level by how the Link compiler uses the same processes as used in low-level
+			programming languages including Assembly. Like low-level programming languages, Link uses step-by-step instructions to
+			run a program. However, unlike most low-level languages, Link also supports recursion and the base for Link is entirely
+			object-oriented and you can add new functions to the language using the host language (currently only JavaScript since
+			Link for Python has not been created yet). While Link may use a lot of memory to store its programs due to its JSON-based
+			syntax, Link helps you visualize how your program will run and requires no knowledge of other programming languages to
+			use. Additionally, you cannot have syntax errors in Link unless you forget the name of one of your Link Blocks (single
+			commands as used in Link). However, you must be aware of the usages of various functions in Link or you may end up triggering
+			an error in the host language.</p>
+	</div>
+	<div class='card'>
+		<h4>How It Works</h4>
+		<p>Link starts out with its JSON-based code which the programmer writes to then run a certain program. When you compile
+			the Link program, the language will sort through the array of Link Blocks to then create an object (JavaScript)/dictionary
+			(Python) form of the array-based Link Block syntax. Then, when starting the program, the first Link Block to run is the
+			one named "start". When it starts, the code reader will redirect to other Link Blocks as they are referenced in the parameter
+			inputs and sequencing attributes in each Link Block. The Link syntax is essentially a text-based version of a flowchart.
+			Therefore, a future IDE could simply be a flowchart creator that compiles into Link.</p>
+	</div>
+	<div class='card'>
+		<h4>What It Can Do</h4>
+		<p>Link can actually do anything its host langauge can do. Since Link's base is object-oriented, you can use the Link language
+			to add new functions for Link Blocks that are written in the host language. Many of the host language functions are already
+			in the modules for a specific version of Link (Link for Web, Link for NodeJS, Link for Python, etc.), but any host language
+			functions not included can be added through your own module or a "def" function in a Link Block in your main code. However,
+			Link can't only do what the host language can. Link also has a built-in secure memory system that cannot be hacked (at
+			least that I know of).</p>
+
+	</div>
+	<div class='card'>
+		<h4>Documentation</h4>
+		<p>Do you want to learn Link? If so, click <a href="./docs.html">this link!</a></p>
+	</div>
+	<div class='card'>
+		<h4>Examples</h4>
+		<p>Do you want to see what Link can do? If so, click <a href="./examples.html">this link!</a></p>
+	</div>
+	</script>
+</body>
+
+</html>
